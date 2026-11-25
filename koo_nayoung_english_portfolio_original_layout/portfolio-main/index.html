@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<!-- saved from url=(0074)./index.html -->
+<html lang="ko"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Koo Nayoung — Portfolio</title>
+<link href="https://fonts.googleapis.com/" rel="preconnect"/>
+<link href="./koo-nayoung-portfolio_files/css2" rel="stylesheet"/>
+<style>
+  :root{
+    --paper: #FAFAF7;
+    --ink: #14151A;
+    --blue: #2F5DFF;
+    --blue-dark: #1E3FC7;
+    --line: #14151A;
+    --disp: 'Unbounded', sans-serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--paper); color:var(--ink); font-family:var(--sans); overflow-x:hidden; }
+  ::selection{ background:var(--blue); color:#fff; }
+  a{ color:inherit; text-decoration:none; }
+
+  /* ===== TOP BAR ===== */
+  .topbar{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:24px 40px; border-bottom:3px solid var(--ink); position:sticky; top:0; background:var(--paper); z-index:20;
+  }
+  .brand{ font-family:var(--disp); font-weight:700; font-size:17px; letter-spacing:-0.01em; }
+  .topnav{ display:flex; gap:6px; }
+  .topnav a{
+    font-family:var(--mono); font-size:12.5px; padding:8px 14px; border:2px solid var(--ink); border-radius:20px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .topnav a:hover{ background:var(--ink); color:var(--paper); }
+
+  /* ===== HERO ===== */
+  .hero{ position:relative; padding:90px 40px 70px; border-bottom:3px solid var(--ink); overflow:hidden; }
+  .hero-grid{ max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr auto; align-items:center; gap:40px; }
+  .hero-name{
+    font-family:var(--disp); font-weight:800; letter-spacing:-0.02em;
+    font-size:clamp(52px, 9vw, 118px); line-height:0.92;
+  }
+  .hero-name .hl{ color:var(--blue); }
+  .hero-role{
+    display:inline-block; margin-top:24px; font-family:var(--mono); font-size:13.5px;
+    background:var(--ink); color:var(--paper); padding:8px 16px; border-radius:4px;
+  }
+  .hero-desc{ font-size:17px; color:var(--ink); max-width:440px; margin-top:22px; line-height:1.6; }
+
+  /* rotating badge */
+  .badge-wrap{ width:150px; height:150px; position:relative; flex-shrink:0; }
+  .badge-spin{ width:100%; height:100%; animation:spin 14s linear infinite; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .badge-center{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:var(--disp); font-weight:700; font-size:13px;
+  }
+  .badge-center::before{
+    content:""; position:absolute; width:52px; height:52px; background:var(--blue); border-radius:50%; z-index:-1;
+  }
+  @media(prefers-reduced-motion: reduce){ .badge-spin{ animation:none; } }
+
+  /* ===== SECTIONS ===== */
+  section{ border-bottom:3px solid var(--ink); }
+  .sec-inner{ max-width:1100px; margin:0 auto; padding:64px 40px; }
+  .sec-label{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase;
+    display:inline-block; padding:5px 12px; border:2px solid var(--ink); border-radius:14px; margin-bottom:26px;
+  }
+  h2{ font-family:var(--disp); font-weight:700; font-size:clamp(28px,4vw,44px); letter-spacing:-0.01em; margin-bottom:24px; }
+
+  /* about */
+  .about-text{ font-size:19px; max-width:640px; line-height:1.75; }
+  .about-text p + p{ margin-top:16px; color:var(--ink); }
+  .about-text strong{ background:var(--blue); color:#fff; padding:1px 6px; border-radius:3px; }
+  .learn-line{ display:inline-flex; align-items:center; gap:8px; margin-top:26px; font-family:var(--mono); font-size:13px; }
+  .learn-line .arrow{ display:inline-block; animation:nudge 1.4s ease-in-out infinite; }
+  @keyframes nudge{ 0%,100%{ transform:translateX(0);} 50%{ transform:translateX(6px);} }
+
+  .note{
+    margin-top:28px; padding:14px 16px; border:2px dashed var(--ink); border-radius:8px;
+    font-size:13.5px; color:var(--ink); max-width:520px;
+  }
+  .note b{ color:var(--blue-dark); }
+
+  /* skills */
+  .skill-cloud{ display:flex; flex-wrap:wrap; gap:12px; }
+  .skill-pill{
+    font-family:var(--mono); font-size:14px; padding:11px 18px; border:2px solid var(--ink); border-radius:24px;
+    transition:transform .15s ease, background .15s ease, color .15s ease;
+  }
+  .skill-pill:hover{ background:var(--blue); border-color:var(--blue); color:#fff; transform:translateY(-3px) rotate(-1deg); }
+
+  /* project poster */
+  .project-poster{
+    background:var(--ink); color:var(--paper); border-radius:14px; padding:44px; position:relative; overflow:hidden;
+  }
+  .project-poster::before{
+    content:""; position:absolute; top:-60px; right:-60px; width:220px; height:220px;
+    background:var(--blue); border-radius:50%; opacity:0.9;
+  }
+  .p-tag{ font-family:var(--mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--paper); opacity:0.65; margin-bottom:14px; position:relative; }
+  .p-title{ font-family:var(--disp); font-weight:800; font-size:clamp(30px,4.5vw,48px); margin-bottom:18px; position:relative; letter-spacing:-0.01em; }
+  .p-desc{ font-size:16px; max-width:520px; opacity:0.85; line-height:1.7; margin-bottom:24px; position:relative; }
+  .p-role{
+    display:inline-block; font-size:13.5px; background:rgba(255,255,255,0.1); padding:10px 16px; border-radius:6px;
+    margin-bottom:24px; position:relative;
+  }
+  .p-role b{ color:var(--blue); font-family:var(--mono); font-weight:400; font-size:11.5px; text-transform:uppercase; margin-right:8px; }
+  .p-tech{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px; position:relative; }
+  .p-tech span{ font-family:var(--mono); font-size:12px; border:1px solid rgba(255,255,255,0.35); padding:5px 11px; border-radius:14px; opacity:0.85; }
+  .p-links{ display:flex; gap:14px; position:relative; flex-wrap:wrap; }
+  .p-links a{
+    font-family:var(--mono); font-size:13.5px; padding:12px 22px; border-radius:24px; font-weight:500;
+    transition:transform .15s ease;
+  }
+  .p-links a:hover{ transform:translateY(-2px); }
+  .p-links a.primary{ background:var(--blue); color:#fff; }
+  .p-links a.ghost{ border:1.5px solid var(--paper); color:var(--paper); }
+
+  .next-slot{
+    margin-top:20px; padding:26px; border:2px dashed var(--ink); border-radius:14px; text-align:center;
+    font-family:var(--mono); font-size:13px; color:var(--ink); opacity:0.6;
+  }
+
+  /* contact */
+  .contact-section{ border-bottom:none; }
+  .contact-inner{ text-align:center; padding:90px 40px; }
+  .contact-big{
+    font-family:var(--disp); font-weight:800; font-size:clamp(34px,6vw,64px); letter-spacing:-0.01em; margin-bottom:30px;
+  }
+  .contact-cta{
+    display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:15px;
+    background:var(--blue); color:#fff; padding:18px 36px; border-radius:30px; font-weight:500;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .contact-cta:hover{ background:var(--ink); transform:translateY(-3px); }
+  .contact-github{ display:block; margin-top:22px; font-family:var(--mono); font-size:13.5px; color:var(--ink); border-bottom:1px solid var(--ink); padding-bottom:2px; display:inline-block; }
+
+  footer{ text-align:center; padding:26px; font-family:var(--mono); font-size:11.5px; color:var(--ink); border-top:3px solid var(--ink); }
+
+  @media(max-width:720px){
+    .topbar{ padding:18px 20px; }
+    .topnav{ display:none; }
+    .hero{ padding:56px 20px 44px; }
+    .hero-grid{ grid-template-columns:1fr; gap:28px; }
+    .badge-wrap{ width:110px; height:110px; }
+    .sec-inner{ padding:48px 20px; }
+    .project-poster{ padding:28px; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+<div class="brand">Koo Nayoung</div>
+<div class="topnav">
+<a href="./index.html#work">Projects</a>
+<a href="./index.html#skills">Skills</a>
+<a href="./index.html#contact">Contact</a>
+</div>
+</div>
+<header class="hero">
+<div class="hero-grid">
+<div>
+<h1 class="hero-name">Koo Nayoung<br/><span class="hl">KOO NAYOUNG</span></h1>
+</div>
+<div class="badge-wrap">
+<svg class="badge-spin" viewbox="0 0 150 150">
+<defs><path d="M 75,75 m -60,0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0" id="circlePath"></path></defs>
+<text fill="#14151A" font-family="JetBrains Mono" font-size="10.5" letter-spacing="2">
+<textpath href="#circlePath">Always eager to learn ✦ Always eager to learn ✦ </textpath>
+</text>
+</svg>
+<div class="badge-center">KNY</div>
+</div>
+</div>
+</header>
+<section id="work">
+<div class="sec-inner">
+<div class="sec-label">01 · Work</div>
+<h2>Projects</h2>
+<div class="project-poster" style="margin-bottom:28px;">
+<div class="p-tag">Team Project</div>
+<div class="p-title">APPLE CARE</div>
+<p class="p-desc">A Bayesian VLA-inspired collaborative apple-sorting robot that asks for human input only when uncertainty arises.</p>
+<div class="p-role"><b>My Role</b>Developed core collaborative-robot control logic · Integrated key ROS2 nodes · Designed and built a real-time operations dashboard and human-in-the-loop (HITL) interface</div>
+<div class="p-tech"><span>ROS2</span><span>FastAPI</span><span>YOLO</span><span>Bayesian</span></div>
+<div class="p-links">
+<a class="primary" href="./applecare-portfolio.html" rel="noopener" target="_blank">View Project →</a>
+<a class="ghost" href="https://github.com/kny1209/apple-care.git" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+<div class="project-poster" style="margin-bottom:28px;">
+<div class="p-tag">Team Project</div>
+<div class="p-title">AUTO VALET BOT</div>
+<p class="p-desc">An autonomous valet-parking system built in an Isaac Sim digital-twin environment. It detects vehicles, moves underneath them, and transports them to designated parking spaces.</p>
+<div class="p-role"><b>My Role</b>AI vision development · Vehicle and wheel detection and stopping logic using a depth camera · Path alignment using ArUco markers</div>
+<div class="p-tech"><span>Isaac Sim</span><span>ROS2</span><span>Autonomous Robotics</span></div>
+<div class="p-links">
+<a class="primary" href="./auto-valet-bot-portfolio.html" rel="noopener" target="_blank">View Project →</a>
+<a class="ghost" href="https://github.com/kny1209/Rokey_proj_03-Isaac-Sim-.git" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+<div class="project-poster" style="margin-bottom:28px;">
+<div class="p-tag">Team Project</div>
+<div class="p-title">AUTO-DUMP-BOT</div>
+<p class="p-desc">An autonomous food-waste collection and cleaning system. The collaborative robot handles gripping, disposal, cleaning, and returning without human intervention.</p>
+<div class="p-role"><b>My Role</b>Designed user and admin HMIs with Tkinter and implemented real-time status displays</div>
+<div class="p-tech"><span>ROS2</span><span>FastAPI</span><span>Tkinter</span></div>
+<div class="p-links">
+<a class="primary" href="./auto-dump-bot-portfolio.html" rel="noopener" target="_blank">View Project →</a>
+<a class="ghost" href="https://github.com/kny1209/auto_dump_bot.git" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+<div class="project-poster" style="margin-bottom:28px;">
+<div class="p-tag">Team Project</div>
+<div class="p-title">UNDER-GUARD</div>
+<p class="p-desc">An autonomous pest-monitoring patrol system in which two AMRs take turns patrolling blind spots in warehouses and logistics facilities, detecting and tracking rodents, and reporting their locations and evidence to a monitoring system in real time.</p>
+<div class="p-role"><b>My Role</b>Vision Lead · Created the world map and integrated vision with robot navigation · Supported robot behavior implementation</div>
+<div class="p-tech"><span>ROS2</span><span>Nav2</span><span>YOLO</span><span>OpenCV</span></div>
+<div class="p-links">
+<a class="primary" href="./under-guard-portfolio.html" rel="noopener" target="_blank">View Project →</a>
+<a class="ghost" href="https://github.com/kny1209/2026_ROKEY_4_UnderGuard.git" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+</section>
+<section id="skills">
+<div class="sec-inner">
+<div class="sec-label">02 · Skills</div>
+<h2>Technical Skills</h2>
+<div class="skill-cloud">
+<span class="skill-pill">Python</span>
+<span class="skill-pill">Tkinter</span>
+<span class="skill-pill">ROS2</span>
+<span class="skill-pill">Isaac-sim</span>
+<span class="skill-pill">YOLO</span>
+</div>
+</div>
+</section>
+<section class="contact-section" id="contact">
+<div class="contact-inner">
+<div class="sec-label">03 · Contact</div>
+<div class="contact-big">Let’s work together</div>
+<a class="contact-cta" href="mailto:kny20031209@gmail.com">Email Me →</a>
+<br/>
+<a class="contact-github" href="https://github.com/kny1209" rel="noopener" target="_blank">github.com/kny1209</a>
+</div>
+</section>
+<footer>Koo Nayoung · kny20031209@gmail.com</footer>
+</body></html>

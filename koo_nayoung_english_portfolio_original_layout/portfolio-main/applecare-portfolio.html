@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<!-- saved from url=(0072)./applecare-portfolio.html -->
+<html lang="ko"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>APPLE CARE — Koo Nayoung Portfolio</title>
+<link href="https://fonts.googleapis.com/" rel="preconnect"/>
+<link href="./applecare-portfolio_files/css2" rel="stylesheet"/>
+<style>
+  :root{
+    --paper: #FAFAF7;
+    --ink: #14151A;
+    --blue: #2F5DFF;
+    --blue-dark: #1E3FC7;
+    --green: #1E8E5A;
+    --red: #D6402F;
+    --disp: 'Unbounded', sans-serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--paper); color:var(--ink); font-family:var(--sans); overflow-x:hidden; }
+  ::selection{ background:var(--blue); color:#fff; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  /* ===== TOP BAR ===== */
+  .topbar{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:24px 40px; border-bottom:3px solid var(--ink); position:sticky; top:0; background:var(--paper); z-index:20;
+  }
+  .brand{ font-family:var(--disp); font-weight:700; font-size:17px; letter-spacing:-0.01em; }
+  .topnav{ display:flex; gap:6px; }
+  .topnav a{
+    font-family:var(--mono); font-size:12.5px; padding:8px 14px; border:2px solid var(--ink); border-radius:20px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .topnav a:hover{ background:var(--ink); color:var(--paper); }
+
+  /* ===== HERO ===== */
+  .hero{ position:relative; padding:80px 40px 60px; border-bottom:3px solid var(--ink); background:var(--ink); color:var(--paper); overflow:hidden; }
+  .hero-inner{ max-width:1100px; margin:0 auto; }
+  .hero-tag{ font-family:var(--mono); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.6; margin-bottom:18px; }
+  .hero-title{
+    font-family:var(--disp); font-weight:800; letter-spacing:-0.02em;
+    font-size:clamp(40px, 7vw, 84px); line-height:0.98; margin-bottom:20px;
+  }
+  .hero-title .hl{ color:var(--blue); }
+  .hero-desc{ font-size:18px; max-width:620px; line-height:1.7; opacity:0.88; margin-bottom:30px; }
+  .hero-meta{ display:flex; flex-wrap:wrap; gap:10px; }
+  .meta-chip{
+    font-family:var(--mono); font-size:13px; border:1.5px solid rgba(255,255,255,0.35); padding:9px 16px; border-radius:20px; opacity:0.9;
+  }
+  .meta-chip b{ color:var(--blue); font-weight:500; margin-right:6px; }
+  .hero-jump{ display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+  .hero-jump a{
+    font-family:var(--mono); font-size:12.5px; padding:8px 16px; border:1.5px solid rgba(255,255,255,0.4); border-radius:18px;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .hero-jump a:hover{ background:var(--blue); border-color:var(--blue); }
+
+  /* ===== SECTIONS ===== */
+  section{ border-bottom:3px solid var(--ink); }
+  .sec-inner{ max-width:1100px; margin:0 auto; padding:56px 40px; }
+  .sec-label{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase;
+    display:inline-block; padding:5px 12px; border:2px solid var(--ink); border-radius:14px; margin-bottom:26px;
+  }
+  h2{ font-family:var(--disp); font-weight:700; font-size:clamp(26px,3.6vw,38px); letter-spacing:-0.01em; margin-bottom:16px; }
+  .sec-sub{ font-size:16.5px; max-width:700px; line-height:1.7; color:var(--ink); opacity:0.85; margin-bottom:36px; }
+
+  /* problem-solving cards */
+  .case-card{
+    border:2px solid var(--ink); border-radius:16px; margin-bottom:24px; overflow:hidden; background:#fff;
+  }
+  .case-head{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:20px;
+    padding:22px 28px; border-bottom:2px solid var(--ink); flex-wrap:wrap;
+  }
+  .case-num{ font-family:var(--mono); font-size:12.5px; color:var(--blue); margin-bottom:6px; letter-spacing:0.05em; }
+  .case-title{ font-family:var(--disp); font-weight:700; font-size:20px; letter-spacing:-0.01em; }
+  .case-scope{
+    font-family:var(--mono); font-size:11.5px; border:1.5px solid var(--ink); border-radius:14px; padding:6px 12px; white-space:nowrap;
+  }
+  .case-scope.fe{ background:var(--blue); color:#fff; border-color:var(--blue); }
+  .case-body{ padding:26px 28px; }
+  .flow{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-bottom:26px; }
+  .flow-step{ padding:0 18px; position:relative; }
+  .flow-step:not(:first-child){ border-left:2px dashed var(--ink); padding-left:22px; }
+  .flow-label{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    display:inline-block; padding:3px 10px; border-radius:10px; margin-bottom:10px; font-weight:500;
+  }
+  .flow-label.problem{ background:rgba(214,64,47,0.12); color:var(--red); }
+  .flow-label.attempt{ background:rgba(20,21,26,0.08); color:var(--ink); }
+  .flow-label.solve{ background:rgba(47,93,255,0.12); color:var(--blue-dark); }
+  .flow-label.result{ background:rgba(30,142,90,0.12); color:var(--green); }
+  .flow-step p{ font-size:14px; line-height:1.6; }
+  .case-figure{ margin-top:22px; border:2px solid var(--ink); border-radius:10px; overflow:hidden; }
+  .case-figure img{ width:100%; }
+  .case-figure .fig-cap{ font-family:var(--mono); font-size:11.5px; padding:10px 14px; border-top:2px solid var(--ink); background:#fff; color:var(--ink); }
+  .case-diagram{ margin-top:22px; border:2px solid var(--ink); border-radius:10px; overflow:hidden; background:#fff; }
+  .case-diagram svg{ display:block; width:100%; height:auto; }
+  .case-diagram .fig-cap{ font-family:var(--mono); font-size:11.5px; padding:10px 14px; border-top:2px solid var(--ink); background:#fff; color:var(--ink); }
+
+  /* UI screenshot strip */
+  .func-strip{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .func-item{ border:2px solid var(--ink); border-radius:12px; overflow:hidden; background:#fff; }
+  .func-item img{ width:100%; aspect-ratio:3/2; object-fit:contain; background:#14151A; }
+  .func-item-body{ padding:14px 16px; }
+  .func-item-num{ font-family:var(--mono); font-size:11px; color:var(--blue); margin-bottom:4px; }
+  .func-item-title{ font-family:var(--disp); font-weight:700; font-size:14.5px; margin-bottom:6px; }
+  .func-item-body p{ font-size:12.5px; line-height:1.55; opacity:0.85; }
+
+  @media(max-width:900px){
+    .func-strip{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media(max-width:720px){
+    .flow{ grid-template-columns:1fr; gap:18px; }
+    .flow-step:not(:first-child){ border-left:none; border-top:2px dashed var(--ink); padding-left:0; padding-top:14px; }
+    .func-strip{ grid-template-columns:1fr; }
+  }
+
+  /* nav footer */
+  .nav-footer{ border-bottom:none; text-align:center; }
+  .nav-footer-inner{ padding:70px 40px; }
+  .back-cta{
+    display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:15px;
+    background:var(--ink); color:var(--paper); padding:16px 32px; border-radius:30px; font-weight:500;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .back-cta:hover{ background:var(--blue); transform:translateY(-3px); }
+  .github-link{ display:inline-block; margin-top:22px; font-family:var(--mono); font-size:13.5px; color:var(--ink); border-bottom:1px solid var(--ink); padding-bottom:2px; }
+
+  footer{ text-align:center; padding:26px; font-family:var(--mono); font-size:11.5px; color:var(--ink); border-top:3px solid var(--ink); }
+
+  @media(max-width:720px){
+    .topbar{ padding:18px 20px; }
+    .topnav{ display:none; }
+    .hero{ padding:56px 20px 44px; }
+    .sec-inner{ padding:48px 20px; }
+    .case-head, .case-body{ padding:22px; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+<a class="brand" href="./index.html">Koo Nayoung</a>
+<div class="topnav">
+<a href="./index.html#work">Back to Home</a>
+<a href="https://github.com/kny1209" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+<header class="hero">
+<div class="hero-inner">
+<div class="hero-tag">Team Project</div>
+<h1 class="hero-title">APPLE<br/><span class="hl">CARE</span></h1>
+<p class="hero-desc">A Bayesian VLA-inspired collaborative apple-sorting robot that improves its autonomy through human feedback. It uses a human-in-the-loop approach, asking for help only when the situation is ambiguous.</p>
+<div class="hero-jump">
+<a href="#robot">01 · Robot Development</a>
+<a href="#ui">02 · UI Implementation</a>
+<a href="#problem-solving">03 · Front-End Problem Solving</a>
+</div>
+</div>
+</header>
+<section id="robot">
+<div class="sec-inner">
+<div class="sec-label">01 · Robot Control</div>
+<h2>Robot System</h2>
+<p class="sec-sub">I developed the gripping, movement, and safety-stop logic for a Doosan M0609 collaborative robot. This section covers three key issues identified through hands-on testing and how I resolved them.</p>
+<!-- CASE R1 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 01</div>
+<div class="case-title">Resolving Emergency-Stop (E-STOP) Latency</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>Pressing E-STOP did not stop the robot immediately. It completed the current movement, gripping, or placement step before stopping, leaving a risk of collision.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I examined when and how often the stop signal was checked during each motion phase.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>I continuously polled hardware status every 10 ms during movement and every 0.5 seconds during force-controlled gripping and placement. When a stop was detected, a stop event and the stop function were triggered together in a dual-stop structure.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>The robot no longer had to finish its current motion phase: the stop took effect within 10 ms during movement and within 0.5 seconds during force control.</p>
+</div>
+</div>
+<div class="case-figure">
+<img alt="E-STOP demo — immediate stop during gripping and transition to CRITICAL ALERT" src="./applecare-portfolio_files/estop_stop.gif"/>
+<div class="fig-cap">Live Demo — E-STOP triggered during gripping → immediate stop → CRITICAL ALERT</div>
+</div>
+</div>
+</div>
+<!-- CASE R2 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 02</div>
+<div class="case-title">Preventing Wall Collisions — Angled Approach</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>The gripper approached the apple vertically and in a straight line, colliding with the tray wall and risking damage to the robot and equipment.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I tested an angled approach based on the escape direction and rotation axis.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>Hands-on testing revealed that the rotation-axis sign was reversed, so I corrected it and applied different tilt angles: 10° near walls and 22° near corners.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>The gripper successfully approached without hitting walls or corners, and no further robot or equipment damage occurred.</p>
+</div>
+</div>
+<div class="case-figure">
+<img alt="Live demo of wall-avoidance approaches from the left, front, and right" src="./applecare-portfolio_files/wall_avoidance.gif"/>
+<div class="fig-cap">Live Demo — Direction-specific angled approaches: left (side-wall avoidance), front (front-wall avoidance), and right</div>
+</div>
+</div>
+</div>
+<!-- CASE R3 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 03</div>
+<div class="case-title">Preventing Apple Damage from Excessive Grip Force</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>The gripper initially applied a fixed, excessive force, causing the apples to become bruised or deformed.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I explored measuring a baseline force before gripping, then calculating the deviation and increasing force incrementally.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>After measuring the baseline, the system increased force one step at a time—up to six steps—when the deviation exceeded 3.0 N, with a two-step safety margin to prevent slipping.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>By applying only the minimum force needed, incrementally rather than using a fixed high force, the robot gripped apples securely without damaging them.</p>
+</div>
+</div>
+<div class="case-figure">
+<img alt="Live demo of gripping with incremental force control" src="./applecare-portfolio_files/gentle_grasp.gif"/>
+<div class="fig-cap">Live Demo — Detecting and lifting an apple from a box without damage</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ui">
+<div class="sec-inner">
+<div class="sec-label">02 · UI Implementation</div>
+<h2>UI Implementation</h2>
+<p class="sec-sub">I designed and built an operator dashboard in Tkinter with four tabs and a sidebar, covering real-time monitoring, robot control, system logs, and emergency-stop screens.</p>
+<div class="func-strip">
+<div class="func-item">
+<img alt="Real-time monitoring screen" src="./applecare-portfolio_files/monitoring.png"/>
+<div class="func-item-body">
+<div class="func-item-num">TAB 1</div>
+<div class="func-item-title">Real-Time Monitoring</div>
+<p>Displays the Cam1 YOLO detection feed, the Cam2 basket feed, and counts for premium, imperfect, processing, and discarded apples.</p>
+</div>
+</div>
+<div class="func-item">
+<img alt="System and robot control screen" src="./applecare-portfolio_files/robot_control.png"/>
+<div class="func-item-body">
+<div class="func-item-num">TAB 3</div>
+<div class="func-item-title">System and Robot Control</div>
+<p>Allows direct robot control using START, PAUSE, and E-STOP controls, along with J1–J6 joint sliders.</p>
+</div>
+</div>
+<div class="func-item">
+<img alt="System log screen" src="./applecare-portfolio_files/system_log.png"/>
+<div class="func-item-body">
+<div class="func-item-num">TAB 4</div>
+<div class="func-item-title">System Logs</div>
+<p>Records events in real time using color-coded logs: green for success, red for errors, and blue for information.</p>
+</div>
+</div>
+<div class="func-item">
+<img alt="Emergency-Stop Screen" src="./applecare-portfolio_files/estop_initial.png"/>
+<div class="func-item-body">
+<div class="func-item-num">E-STOP</div>
+<div class="func-item-title">Emergency-Stop Screen</div>
+<p>The entire screen turns red immediately, and all controls are disabled.</p>
+</div>
+</div>
+<div class="func-item">
+<img alt="Emergency-Stop Recovery Screen" src="./applecare-portfolio_files/estop_resume.png"/>
+<div class="func-item-body">
+<div class="func-item-num">E-STOP</div>
+<div class="func-item-title">Emergency-Stop Recovery Screen</div>
+<p>The RESUME button becomes available only after the physical recovery process is complete.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-solving">
+<div class="sec-inner">
+<div class="sec-label">03 · Frontend Problem Solving</div>
+<h2>Front-End Problem Solving</h2>
+<p class="sec-sub">Challenges and solutions from designing and implementing the real-time operations dashboard and human-in-the-loop interface.</p>
+<!-- CASE 1 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 01</div>
+<div class="case-title">E-STOP Response Delay — Dedicated Thread</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>When E-STOP was pressed in the admin window, the robot stopped only after completing its current action rather than immediately.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I found that the E-STOP signal was waiting in the same thread as the main control loop.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>I moved E-STOP signal reception to a dedicated thread so the signal could be received and acted on immediately, even while the robot was moving.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>E-STOP now takes effect immediately at any point during operation.</p>
+</div>
+</div>
+<div class="case-diagram">
+<svg viewbox="0 0 700 190" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrowA" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3">
+<path d="M0,0 L6,3 L0,6 Z" fill="#14151A"></path>
+</marker>
+</defs>
+<text fill="#D6402F" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="1" x="20" y="24">BEFORE — Sequential Processing in One Thread</text>
+<rect fill="#fff" height="36" rx="6" stroke="#14151A" stroke-width="1.5" width="140" x="20" y="36"></rect>
+<text fill="#14151A" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="90" y="58">Robot in Motion</text>
+<line marker-end="url(#arrowA)" stroke="#14151A" stroke-width="1.5" x1="160" x2="200" y1="54" y2="54"></line>
+<rect fill="#FAFAF7" height="36" rx="6" stroke="#D6402F" stroke-dasharray="3 3" stroke-width="1.5" width="140" x="200" y="36"></rect>
+<text fill="#D6402F" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="270" y="58">E-STOP Waiting</text>
+<line marker-end="url(#arrowA)" stroke="#D6402F" stroke-width="1.5" x1="340" x2="380" y1="54" y2="54"></line>
+<rect fill="#fff" height="36" rx="6" stroke="#D6402F" stroke-width="1.5" width="140" x="380" y="36"></rect>
+<text fill="#D6402F" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="450" y="58">Stops After Motion Completes</text>
+<text fill="#D6402F" font-family="JetBrains Mono, monospace" font-size="10" x="540" y="58">✕ Delayed</text>
+<line opacity="0.3" stroke="#14151A" stroke-dasharray="2 4" stroke-width="1" x1="20" x2="680" y1="95" y2="95"></line>
+<text fill="#1E8E5A" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="1" x="20" y="120">AFTER — Dedicated Thread</text>
+<rect fill="#fff" height="36" rx="6" stroke="#14151A" stroke-width="1.5" width="140" x="20" y="132"></rect>
+<text fill="#14151A" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="90" y="154">Robot in Motion</text>
+<rect fill="none" height="0" width="140" x="20" y="176"></rect>
+<rect fill="#fff" height="36" rx="6" stroke="#2F5DFF" stroke-width="2" width="140" x="200" y="132"></rect>
+<text fill="#2F5DFF" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="270" y="154">E-STOP Thread</text>
+<line opacity="0.4" stroke="#14151A" stroke-width="1" x1="90" x2="90" y1="168" y2="182"></line>
+<line stroke="#2F5DFF" stroke-width="1.3" x1="270" x2="270" y1="168" y2="182"></line>
+<path d="M 270 182 L 90 182" marker-end="url(#arrowA)" stroke="#2F5DFF" stroke-width="1.3"></path>
+<text fill="#1E8E5A" font-family="JetBrains Mono, monospace" font-size="10.5" x="500" y="154">✓ Immediate Interrupt and Stop</text>
+</svg>
+<div class="fig-cap">Single-threaded sequence vs. dedicated E-STOP thread</div>
+</div>
+</div>
+</div>
+<!-- CASE 2 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 02</div>
+<div class="case-title">E-STOP UX — Don’t Wait for the Server Response</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>Waiting for the server response before changing the screen created a delay during which the operator might not recognize the emergency.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I changed the flow so the client responds first while the server request runs separately in parallel.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>On an E-STOP click, the screen turns red and tab navigation is blocked immediately, while the actual stop request is sent to the server in parallel via REST.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>Operators can now recognize the emergency immediately, regardless of network latency.</p>
+</div>
+</div>
+<div class="case-diagram">
+<svg viewbox="0 0 700 170" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrowB" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3">
+<path d="M0,0 L6,3 L0,6 Z" fill="#14151A"></path>
+</marker>
+</defs>
+<rect fill="#fff" height="40" rx="8" stroke="#14151A" stroke-width="1.5" width="130" x="20" y="66"></rect>
+<text fill="#14151A" font-family="JetBrains Mono, monospace" font-size="10.5" text-anchor="middle" x="85" y="90">E-STOP Click</text>
+<line marker-end="url(#arrowB)" stroke="#2F5DFF" stroke-width="1.5" x1="150" x2="330" y1="76" y2="30"></line>
+<rect fill="#fff" height="38" rx="8" stroke="#2F5DFF" stroke-width="2" width="200" x="330" y="12"></rect>
+<text fill="#2F5DFF" font-family="JetBrains Mono, monospace" font-size="10.5" text-anchor="middle" x="430" y="36">Immediate Local Response (0 ms)</text>
+<text fill="#2F5DFF" font-family="JetBrains Mono, monospace" font-size="9.5" x="560" y="36">Screen Turns Red · Tabs Disabled</text>
+<line marker-end="url(#arrowB)" stroke="#14151A" stroke-width="1.3" x1="150" x2="330" y1="96" y2="130"></line>
+<rect fill="#fff" height="38" rx="8" stroke="#14151A" stroke-width="1.5" width="200" x="330" y="112"></rect>
+<text fill="#14151A" font-family="JetBrains Mono, monospace" font-size="10.5" text-anchor="middle" x="430" y="136">Server REST Request (Parallel)</text>
+<text fill="#14151A" font-family="JetBrains Mono, monospace" font-size="9.5" opacity="0.7" x="560" y="136">Physical Button Warning on Failure</text>
+</svg>
+<div class="fig-cap">Immediate local response + parallel server request</div>
+</div>
+</div>
+</div>
+<!-- CASE 4 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 03</div>
+<div class="case-title">Thread-Safe WebSocket Updates in Tkinter</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>Updating Tkinter widgets directly with WebSocket data received in a background thread could cause thread conflicts and crashes.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I adopted a queue-based approach: the background thread only enqueues messages, and the main thread processes them.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>The background thread now only adds messages to a queue. The main thread updates the widgets every 100 ms using root.after().</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>This made widget updates thread-safe and enabled automatic reconnection every two seconds if the connection drops.</p>
+</div>
+</div>
+<div class="case-diagram">
+<svg viewbox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrowC" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3">
+<path d="M0,0 L6,3 L0,6 Z" fill="#14151A"></path>
+</marker>
+</defs>
+<rect fill="#fff" height="42" rx="8" stroke="#14151A" stroke-width="1.5" width="115" x="15" y="45"></rect>
+<text fill="#14151A" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="72" y="70">WebSocket</text>
+<line marker-end="url(#arrowC)" stroke="#14151A" stroke-width="1.5" x1="130" x2="170" y1="66" y2="66"></line>
+<rect fill="#fff" height="42" rx="8" stroke="#14151A" stroke-width="1.5" width="115" x="170" y="45"></rect>
+<text fill="#14151A" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="227" y="70">Message Queue</text>
+<text fill="#14151A" font-family="JetBrains Mono, monospace" font-size="9" opacity="0.6" text-anchor="middle" x="227" y="100">Background Thread</text>
+<line marker-end="url(#arrowC)" stroke="#2F5DFF" stroke-width="1.5" x1="285" x2="325" y1="66" y2="66"></line>
+<rect fill="#fff" height="42" rx="8" stroke="#2F5DFF" stroke-width="2" width="150" x="325" y="45"></rect>
+<text fill="#2F5DFF" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="400" y="70">root.after() 100ms</text>
+<text fill="#2F5DFF" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle" x="400" y="100">Main Thread</text>
+<line marker-end="url(#arrowC)" stroke="#1E8E5A" stroke-width="1.5" x1="475" x2="515" y1="66" y2="66"></line>
+<rect fill="#fff" height="42" rx="8" stroke="#1E8E5A" stroke-width="2" width="165" x="515" y="45"></rect>
+<text fill="#1E8E5A" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="597" y="70">✓ Widget Update</text>
+</svg>
+<div class="fig-cap">WebSocket → Queue → root.after(100 ms) → Main-thread Widget Update</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="nav-footer">
+<div class="nav-footer-inner">
+<a class="back-cta" href="./index.html">← Explore Other Projects</a>
+<br/>
+<a class="github-link" href="https://github.com/kny1209" rel="noopener" target="_blank">github.com/kny1209</a>
+</div>
+</section>
+<footer>Koo Nayoung · kny20031209@gmail.com</footer>
+</body></html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<!-- saved from url=(0077)./auto-valet-bot-portfolio.html -->
+<html lang="ko"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AUTO VALET BOT — Koo Nayoung Portfolio</title>
+<link href="https://fonts.googleapis.com/" rel="preconnect"/>
+<link href="./auto-valet-bot-portfolio_files/css2" rel="stylesheet"/>
+<style>
+  :root{
+    --paper: #FAFAF7;
+    --ink: #14151A;
+    --blue: #2F5DFF;
+    --blue-dark: #1E3FC7;
+    --green: #1E8E5A;
+    --red: #D6402F;
+    --disp: 'Unbounded', sans-serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--paper); color:var(--ink); font-family:var(--sans); overflow-x:hidden; }
+  ::selection{ background:var(--blue); color:#fff; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  /* ===== TOP BAR ===== */
+  .topbar{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:24px 40px; border-bottom:3px solid var(--ink); position:sticky; top:0; background:var(--paper); z-index:20;
+  }
+  .brand{ font-family:var(--disp); font-weight:700; font-size:17px; letter-spacing:-0.01em; }
+  .topnav{ display:flex; gap:6px; }
+  .topnav a{
+    font-family:var(--mono); font-size:12.5px; padding:8px 14px; border:2px solid var(--ink); border-radius:20px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .topnav a:hover{ background:var(--ink); color:var(--paper); }
+
+  /* ===== HERO ===== */
+  .hero{ position:relative; padding:80px 40px 60px; border-bottom:3px solid var(--ink); background:var(--ink); color:var(--paper); overflow:hidden; }
+  .hero-inner{ max-width:1100px; margin:0 auto; }
+  .hero-tag{ font-family:var(--mono); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.6; margin-bottom:18px; }
+  .hero-title{
+    font-family:var(--disp); font-weight:800; letter-spacing:-0.02em;
+    font-size:clamp(40px, 7vw, 84px); line-height:0.98; margin-bottom:20px;
+  }
+  .hero-title .hl{ color:var(--blue); }
+  .hero-desc{ font-size:18px; max-width:620px; line-height:1.7; opacity:0.88; margin-bottom:30px; }
+  .hero-meta{ display:flex; flex-wrap:wrap; gap:10px; }
+  .meta-chip{
+    font-family:var(--mono); font-size:13px; border:1.5px solid rgba(255,255,255,0.35); padding:9px 16px; border-radius:20px; opacity:0.9;
+  }
+  .meta-chip b{ color:var(--blue); font-weight:500; margin-right:6px; }
+  .hero-jump{ display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+  .hero-jump a{
+    font-family:var(--mono); font-size:12.5px; padding:8px 16px; border:1.5px solid rgba(255,255,255,0.4); border-radius:18px;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .hero-jump a:hover{ background:var(--blue); border-color:var(--blue); }
+
+  /* ===== SECTIONS ===== */
+  section{ border-bottom:3px solid var(--ink); }
+  .sec-inner{ max-width:1100px; margin:0 auto; padding:56px 40px; }
+  .sec-label{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase;
+    display:inline-block; padding:5px 12px; border:2px solid var(--ink); border-radius:14px; margin-bottom:26px;
+  }
+  h2{ font-family:var(--disp); font-weight:700; font-size:clamp(26px,3.6vw,38px); letter-spacing:-0.01em; margin-bottom:16px; }
+  .sec-sub{ font-size:16.5px; max-width:700px; line-height:1.7; color:var(--ink); opacity:0.85; margin-bottom:36px; }
+
+  /* problem-solving cards */
+  .case-card{
+    border:2px solid var(--ink); border-radius:16px; margin-bottom:24px; overflow:hidden; background:#fff;
+  }
+  .case-head{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:20px;
+    padding:22px 28px; border-bottom:2px solid var(--ink); flex-wrap:wrap;
+  }
+  .case-num{ font-family:var(--mono); font-size:12.5px; color:var(--blue); margin-bottom:6px; letter-spacing:0.05em; }
+  .case-title{ font-family:var(--disp); font-weight:700; font-size:20px; letter-spacing:-0.01em; }
+  .case-scope{
+    font-family:var(--mono); font-size:11.5px; border:1.5px solid var(--ink); border-radius:14px; padding:6px 12px; white-space:nowrap;
+  }
+  .case-scope.vision{ background:var(--blue); color:#fff; border-color:var(--blue); }
+  .case-body{ padding:26px 28px; }
+  .flow{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-bottom:26px; }
+  .flow.steps3{ grid-template-columns:repeat(3,1fr); }
+  .flow-step{ padding:0 18px; position:relative; }
+  .flow-step:not(:first-child){ border-left:2px dashed var(--ink); padding-left:22px; }
+  .flow-label{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    display:inline-block; padding:3px 10px; border-radius:10px; margin-bottom:10px; font-weight:500;
+  }
+  .flow-label.problem{ background:rgba(214,64,47,0.12); color:var(--red); }
+  .flow-label.attempt{ background:rgba(20,21,26,0.08); color:var(--ink); }
+  .flow-label.solve{ background:rgba(47,93,255,0.12); color:var(--blue-dark); }
+  .flow-label.result{ background:rgba(30,142,90,0.12); color:var(--green); }
+  .flow-step p{ font-size:14px; line-height:1.6; }
+  .flow-step .num{ font-family:var(--disp); font-weight:700; font-size:13px; color:var(--blue); margin-right:6px; }
+  .case-result{
+    background:var(--paper); border:1.5px dashed var(--ink); border-radius:10px; padding:16px 20px; font-size:14.5px; line-height:1.7;
+  }
+  .case-result b{ color:var(--blue-dark); }
+  .case-figure{ margin-top:22px; border:2px solid var(--ink); border-radius:10px; overflow:hidden; }
+  .case-figure img{ width:100%; }
+  .case-figure.duo{ display:grid; grid-template-columns:1fr 1fr; gap:3px; background:var(--ink); }
+  .case-figure.duo img{ height:100%; object-fit:cover; display:block; }
+  .case-figure .fig-cap{ font-family:var(--mono); font-size:11.5px; padding:10px 14px; border-top:2px solid var(--ink); grid-column:1/-1; background:#fff; color:var(--ink); }
+
+  /* function flow strip (4 steps with images) */
+  .func-strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:40px; }
+  .func-item{ border:2px solid var(--ink); border-radius:12px; overflow:hidden; background:#fff; }
+  .func-item img{ width:100%; aspect-ratio:3/2; object-fit:contain; background:#14151A; }
+  .func-item-body{ padding:14px 16px; }
+  .func-item-num{ font-family:var(--mono); font-size:11px; color:var(--blue); margin-bottom:4px; }
+  .func-item-title{ font-family:var(--disp); font-weight:700; font-size:14.5px; margin-bottom:6px; }
+  .func-item-body p{ font-size:12.5px; line-height:1.55; opacity:0.85; }
+
+  @media(max-width:900px){
+    .func-strip{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media(max-width:720px){
+    .flow, .flow.steps3{ grid-template-columns:1fr; gap:18px; }
+    .flow-step:not(:first-child){ border-left:none; border-top:2px dashed var(--ink); padding-left:0; padding-top:14px; }
+    .case-figure.duo{ grid-template-columns:1fr; }
+    .func-strip{ grid-template-columns:1fr; }
+  }
+
+  /* nav footer */
+  .nav-footer{ border-bottom:none; text-align:center; }
+  .nav-footer-inner{ padding:70px 40px; }
+  .back-cta{
+    display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:15px;
+    background:var(--ink); color:var(--paper); padding:16px 32px; border-radius:30px; font-weight:500;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .back-cta:hover{ background:var(--blue); transform:translateY(-3px); }
+  .github-link{ display:inline-block; margin-top:22px; font-family:var(--mono); font-size:13.5px; color:var(--ink); border-bottom:1px solid var(--ink); padding-bottom:2px; }
+
+  footer{ text-align:center; padding:26px; font-family:var(--mono); font-size:11.5px; color:var(--ink); border-top:3px solid var(--ink); }
+
+  @media(max-width:720px){
+    .topbar{ padding:18px 20px; }
+    .topnav{ display:none; }
+    .hero{ padding:56px 20px 44px; }
+    .sec-inner{ padding:48px 20px; }
+    .case-head, .case-body{ padding:22px; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+<a class="brand" href="./index.html">Koo Nayoung</a>
+<div class="topnav">
+<a href="./index.html#work">Back to Home</a>
+<a href="https://github.com/kny1209" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+<header class="hero">
+<div class="hero-inner">
+<div class="hero-tag">Team Project</div>
+<h1 class="hero-title">AUTO VALET<br/><span class="hl">BOT</span></h1>
+<p class="hero-desc">An autonomous valet-parking system that detects vehicles in an Isaac Sim digital twin, moves underneath them, and transports them to designated parking spaces.</p>
+<div class="hero-jump">
+<a href="./auto-valet-bot-portfolio.html#robot-asset">01 · Robot Asset Development</a>
+<a href="./auto-valet-bot-portfolio.html#robot-impl">02 · Robot Implementation</a>
+<a href="./auto-valet-bot-portfolio.html#vision">03 · Vision System</a>
+</div>
+</div>
+</header>
+<section id="robot-asset">
+<div class="sec-inner">
+<div class="sec-label">01 · Robot Asset</div>
+<h2>Robot Asset Development</h2>
+<p class="sec-sub">The design iterations involved in developing a robot structure that can lift and transport vehicles reliably.</p>
+<!-- CASE 1 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 01</div>
+<div class="case-title">Iterative Lift Design — ver.1 → ver.2</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>In ver.1, a single robot lifted the vehicle from underneath, which resulted in poor stability.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I tested a single-robot lifting design using arms that grip the wheels directly.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>I redesigned the mechanism so the arms slide underneath the wheels and adjusted the structure to match the vehicle’s ground clearance.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>This resulted in an arm-based lifting structure that can accommodate different vehicle types.</p>
+</div>
+</div>
+<div class="case-figure duo">
+<img alt="ver.1 flat-plate lift robot" src="./auto-valet-bot-portfolio_files/ver1_flat.jpg"/>
+<img alt="ver.2 wheel-gripping arm lift structure" src="./auto-valet-bot-portfolio_files/ver2_arm.jpg"/>
+<div class="fig-cap">ver.1 Flat-Plate Lift  →  ver.2 Wheel-Gripping Arm Lift</div>
+</div>
+<div class="case-figure duo" style="margin-top:16px;">
+<img alt="Individual ARM motion test (URDF)" src="./auto-valet-bot-portfolio_files/arm_joint_test.gif"/>
+<img alt="Wheel-lift test" src="./auto-valet-bot-portfolio_files/wheel_lift_test.gif"/>
+<div class="fig-cap">ARM Joint Motion Test (URDF)  →  Wheel-Lift Test</div>
+</div>
+</div>
+</div>
+<!-- CASE 2 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 02</div>
+<div class="case-title">Wheel Asset Collision Handling — Collider Issue</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>Because the wheel asset was cylindrical, an accurate collider was difficult to create, causing the wheels to float above the ground.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I removed the cylindrical collider and first tested a sphere-based collider.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>I then replaced it with a Convex Mesh Collider fitted to the wheel mesh.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>Lift height <b>+31%</b> , tire-width error reduced by a factor of 2.7 → <b>accurate (0.256 m)</b>improved.</p>
+</div>
+</div>
+<div class="case-figure">
+<img alt="Sphere-wheels vs. convex-wheels collider performance comparison" src="./auto-valet-bot-portfolio_files/collider_table.png"/>
+<div class="fig-cap">Sphere Wheels vs. Convex Wheels — Performance Comparison</div>
+</div>
+<div class="case-figure duo" style="margin-top:16px;">
+<img alt="Sphere-wheels collider test" src="./auto-valet-bot-portfolio_files/sphere_wheels_test.gif"/>
+<img alt="Convex-wheels collider test" src="./auto-valet-bot-portfolio_files/convex_wheels_test.gif"/>
+<div class="fig-cap">Sphere-wheel Test  →  Convex-wheel Test (Convex Decomposition)</div>
+</div>
+</div>
+</div>
+<!-- CASE 3 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 03</div>
+<div class="case-title">Robot–Vehicle Bouncing</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>The robot and vehicle bounced during lifting and movement.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I analyzed two possible causes: robot instability and lift timing.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>I added mass to the robot and introduced a margin into the lift-completion check.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>The bouncing issue was resolved, allowing the robot to transport the vehicle stably.</p>
+</div>
+</div>
+<div class="case-figure">
+<img alt="Live test showing robot–vehicle bouncing" src="./auto-valet-bot-portfolio_files/bounce_issue.gif"/>
+<div class="fig-cap">Reproducing and Analyzing the Bouncing Issue</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="robot-impl">
+<div class="sec-inner">
+<div class="sec-label">02 · Robot Implementation</div>
+<h2>Robot Implementation</h2>
+<p class="sec-sub">The robot operates in four stages: approach underneath the vehicle → lift → move → rotate.</p>
+<div class="func-strip">
+<div class="func-item">
+<img alt="1. Underbody approach" src="./auto-valet-bot-portfolio_files/entry_step.gif"/>
+<div class="func-item-body">
+<div class="func-item-num">STEP 1</div>
+<div class="func-item-title">Underbody Approach</div>
+<p>Moves precisely underneath the vehicle.</p>
+</div>
+</div>
+<div class="func-item">
+<img alt="2. Wheel lift" src="./auto-valet-bot-portfolio_files/lift_step.gif"/>
+<div class="func-item-body">
+<div class="func-item-num">STEP 2</div>
+<div class="func-item-title">Wheel Lift</div>
+<p>Grips the wheels and lifts the vehicle securely.</p>
+</div>
+</div>
+<div class="func-item">
+<img alt="3. Transport" src="./auto-valet-bot-portfolio_files/move_step.gif"/>
+<div class="func-item-body">
+<div class="func-item-num">STEP 3</div>
+<div class="func-item-title">Transport</div>
+<p>Moves to the destination while maintaining balance.</p>
+</div>
+</div>
+<div class="func-item">
+<img alt="4. Rotation" src="./auto-valet-bot-portfolio_files/rotate_step.gif"/>
+<div class="func-item-body">
+<div class="func-item-num">STEP 4</div>
+<div class="func-item-title">Rotation</div>
+<p>Changes direction while carrying the vehicle in a confined space.</p>
+</div>
+</div>
+</div>
+<!-- Virtual center trial and error -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 04</div>
+<div class="case-title">Why a “Virtual Center”? — Iterating on Rotation Control</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow steps3">
+<div class="flow-step">
+<span class="flow-label problem"><span class="num">STEP 1</span>Independent Control · Divergence</span>
+<p>The two robots pushed in opposite directions, causing truck_yaw to diverge to 124°.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt"><span class="num">STEP 2</span>Independent Target Control · Loss of Coordination</span>
+<p>Each robot followed its own target, but inertia and wheel slip caused them to lose control of the vehicle.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve"><span class="num">STEP 3</span>Virtual-Center Rigid-Body Control · Solution</span>
+<p>I defined a virtual center point C between the two robots and coordinated them using a rigid-body velocity field.</p>
+</div>
+</div>
+<div class="case-figure">
+<img alt="Visualization of the virtual center between the two robots" src="./auto-valet-bot-portfolio_files/virtual_center.jpg"/>
+<div class="fig-cap">Rigid-body velocity-field control around a virtual center between the two robots</div>
+</div>
+<div class="case-result" style="margin-top:22px;">
+<b>Result ·</b> The virtual-center approach proved the most accurate and easiest to control, enabling stable rotation even in tight spaces.
+        </div>
+</div>
+</div>
+</div>
+</section>
+<section id="vision">
+<div class="sec-inner">
+<div class="sec-label">03 · Vision Part</div>
+<h2>Vision System</h2>
+<p class="sec-sub">I designed and implemented the recognition and alignment system using a depth camera and ArUco markers.</p>
+<!-- CASE 1 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 01</div>
+<div class="case-title">Generalizing Vehicle Detection with a Depth Camera</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>RGB-only detection was unreliable across vehicle types and lighting conditions.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I monitored how depth values changed relative to a baseline.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>I recalibrated the baseline for each approach and required the detection to persist for three consecutive frames.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>The same logic detected both pickup trucks and SUVs without vehicle-specific calibration.</p>
+</div>
+</div>
+<div class="case-figure duo">
+<img alt="Real-time dual-view depth camera test A" src="./auto-valet-bot-portfolio_files/depth_test_a.gif"/>
+<img alt="Real-time dual-view depth camera test B" src="./auto-valet-bot-portfolio_files/depth_test_b.gif"/>
+<div class="fig-cap">Real-Time Dual-View Depth Camera Test</div>
+</div>
+</div>
+</div>
+<!-- CASE 2 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 02</div>
+<div class="case-title">Improving Stop-Position Accuracy — Dual-Robot Entry/Exit Method</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>Using the minimum depth value in the ROI produced an error of up to 0.367 m because of the curved wheel surface.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I used two threshold-crossing points: entry_z and exit_z.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>I assigned the front and rear axles to two robots and calculated target_z = (entry_z + exit_z) / 2.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>Reduced error from 0.367 m to 0.020–0.034 m, up to <b>18×</b> improvement.</p>
+</div>
+</div>
+<div class="case-figure">
+<img alt="Depth-camera-based stop-decision signal diagram" src="./auto-valet-bot-portfolio_files/depth_chart.png"/>
+<div class="fig-cap">Measured depth_trace — entry/exit/target_z points</div>
+</div>
+</div>
+</div>
+<!-- CASE 3 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 03</div>
+<div class="case-title">Real-Time Path Alignment Using ArUco Markers</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>Approaching beneath a vehicle required accurate target-pose information.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I used cameras inside and underneath the vehicle to detect ArUco markers and tested detection rates at different distances.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>I calculated the pose in real time and used cmd_vel to correct deviations from the target pose immediately.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>The robot aligned reliably without deviating from its path, even in confined spaces.</p>
+</div>
+</div>
+<div class="case-figure">
+<img alt="ArUco marker detection tests by distance and conditions" src="./auto-valet-bot-portfolio_files/marker_recognition.jpg"/>
+<div class="fig-cap">Marker Detection Tests by Distance and Lighting — Green borders indicate successful detection</div>
+</div>
+<div class="case-figure" style="margin-top:16px;">
+<img alt="Real-Time Alignment After Marker Detection" src="./auto-valet-bot-portfolio_files/marker_align.gif"/>
+<div class="fig-cap">Real-Time Alignment After Marker Detection</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="nav-footer">
+<div class="nav-footer-inner">
+<a class="back-cta" href="./index.html">← Explore Other Projects</a>
+<br/>
+<a class="github-link" href="https://github.com/kny1209" rel="noopener" target="_blank">github.com/kny1209</a>
+</div>
+</section>
+<footer>Koo Nayoung · kny20031209@gmail.com</footer>
+</body></html>

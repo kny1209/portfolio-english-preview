@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<!-- saved from url=(0074)./under-guard-portfolio.html -->
+<html lang="ko"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UNDER-GUARD — Koo Nayoung Portfolio</title>
+<link href="https://fonts.googleapis.com/" rel="preconnect"/>
+<link href="./under-guard-portfolio_files/css2" rel="stylesheet"/>
+<style>
+  :root{
+    --paper: #FAFAF7;
+    --ink: #14151A;
+    --blue: #2F5DFF;
+    --blue-dark: #1E3FC7;
+    --green: #1E8E5A;
+    --red: #D6402F;
+    --disp: 'Unbounded', sans-serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--paper); color:var(--ink); font-family:var(--sans); overflow-x:hidden; }
+  ::selection{ background:var(--blue); color:#fff; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  /* ===== TOP BAR ===== */
+  .topbar{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:24px 40px; border-bottom:3px solid var(--ink); position:sticky; top:0; background:var(--paper); z-index:20;
+  }
+  .brand{ font-family:var(--disp); font-weight:700; font-size:17px; letter-spacing:-0.01em; }
+  .topnav{ display:flex; gap:6px; }
+  .topnav a{
+    font-family:var(--mono); font-size:12.5px; padding:8px 14px; border:2px solid var(--ink); border-radius:20px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .topnav a:hover{ background:var(--ink); color:var(--paper); }
+
+  /* ===== HERO ===== */
+  .hero{ position:relative; padding:80px 40px 60px; border-bottom:3px solid var(--ink); background:var(--ink); color:var(--paper); overflow:hidden; }
+  .hero-inner{ max-width:1100px; margin:0 auto; }
+  .hero-tag{ font-family:var(--mono); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.6; margin-bottom:18px; }
+  .hero-title{
+    font-family:var(--disp); font-weight:800; letter-spacing:-0.02em;
+    font-size:clamp(40px, 7vw, 84px); line-height:0.98; margin-bottom:20px;
+  }
+  .hero-title .hl{ color:var(--blue); }
+  .hero-desc{ font-size:18px; max-width:640px; line-height:1.7; opacity:0.88; margin-bottom:30px; }
+  .hero-meta{ display:flex; flex-wrap:wrap; gap:10px; }
+  .meta-chip{
+    font-family:var(--mono); font-size:13px; border:1.5px solid rgba(255,255,255,0.35); padding:9px 16px; border-radius:20px; opacity:0.9;
+  }
+  .meta-chip b{ color:var(--blue); font-weight:500; margin-right:6px; }
+  .hero-jump{ display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+  .hero-jump a{
+    font-family:var(--mono); font-size:12.5px; padding:8px 16px; border:1.5px solid rgba(255,255,255,0.4); border-radius:18px;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .hero-jump a:hover{ background:var(--blue); border-color:var(--blue); }
+
+  /* ===== SECTIONS ===== */
+  section{ border-bottom:3px solid var(--ink); }
+  .sec-inner{ max-width:1100px; margin:0 auto; padding:56px 40px; }
+  .sec-label{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase;
+    display:inline-block; padding:5px 12px; border:2px solid var(--ink); border-radius:14px; margin-bottom:26px;
+  }
+  h2{ font-family:var(--disp); font-weight:700; font-size:clamp(26px,3.6vw,38px); letter-spacing:-0.01em; margin-bottom:16px; }
+  .sec-sub{ font-size:16.5px; max-width:700px; line-height:1.7; color:var(--ink); opacity:0.85; margin-bottom:36px; }
+
+  /* problem-solving cards */
+  .case-card{
+    border:2px solid var(--ink); border-radius:16px; margin-bottom:24px; overflow:hidden; background:#fff;
+  }
+  .case-head{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:20px;
+    padding:22px 28px; border-bottom:2px solid var(--ink); flex-wrap:wrap;
+  }
+  .case-num{ font-family:var(--mono); font-size:12.5px; color:var(--blue); margin-bottom:6px; letter-spacing:0.05em; }
+  .case-title{ font-family:var(--disp); font-weight:700; font-size:20px; letter-spacing:-0.01em; }
+  .case-scope{
+    font-family:var(--mono); font-size:11.5px; border:1.5px solid var(--ink); border-radius:14px; padding:6px 12px; white-space:nowrap;
+  }
+  .case-scope.vision{ background:var(--blue); color:#fff; border-color:var(--blue); }
+  .case-scope.robot{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .case-body{ padding:26px 28px; }
+  .flow{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-bottom:26px; }
+  .flow-step{ padding:0 18px; position:relative; }
+  .flow-step:not(:first-child){ border-left:2px dashed var(--ink); padding-left:22px; }
+  .flow-label{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    display:inline-block; padding:3px 10px; border-radius:10px; margin-bottom:10px; font-weight:500;
+  }
+  .flow-label.problem{ background:rgba(214,64,47,0.12); color:var(--red); }
+  .flow-label.attempt{ background:rgba(20,21,26,0.08); color:var(--ink); }
+  .flow-label.solve{ background:rgba(47,93,255,0.12); color:var(--blue-dark); }
+  .flow-label.result{ background:rgba(30,142,90,0.12); color:var(--green); }
+  .flow-step p{ font-size:14px; line-height:1.6; }
+  .case-figure{ margin-top:22px; border:2px solid var(--ink); border-radius:10px; overflow:hidden; }
+  .case-diagram{ margin-top:22px; border:2px solid var(--ink); border-radius:10px; overflow:hidden; background:#fff; }
+  .case-diagram svg{ display:block; width:100%; height:auto; }
+  .case-diagram .fig-cap{ font-family:var(--mono); font-size:11.5px; padding:10px 14px; border-top:2px solid var(--ink); background:#fff; color:var(--ink); }
+  .case-figure img{ width:100%; }
+  .case-figure .fig-cap{ font-family:var(--mono); font-size:11.5px; padding:10px 14px; border-top:2px solid var(--ink); background:#fff; color:var(--ink); }
+  .case-figure.duo{ display:grid; grid-template-columns:1fr 1fr; gap:3px; background:var(--ink); }
+  .case-figure.duo img{ height:100%; object-fit:cover; display:block; }
+  .case-figure.duo .fig-cap{ grid-column:1/-1; }
+
+  @media(max-width:720px){
+    .flow{ grid-template-columns:1fr; gap:18px; }
+    .flow-step:not(:first-child){ border-left:none; border-top:2px dashed var(--ink); padding-left:0; padding-top:14px; }
+    .case-figure.duo{ grid-template-columns:1fr; }
+  }
+
+  /* nav footer */
+  .nav-footer{ border-bottom:none; text-align:center; }
+  .nav-footer-inner{ padding:70px 40px; }
+  .back-cta{
+    display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:15px;
+    background:var(--ink); color:var(--paper); padding:16px 32px; border-radius:30px; font-weight:500;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .back-cta:hover{ background:var(--blue); transform:translateY(-3px); }
+  .github-link{ display:inline-block; margin-top:22px; font-family:var(--mono); font-size:13.5px; color:var(--ink); border-bottom:1px solid var(--ink); padding-bottom:2px; }
+
+  footer{ text-align:center; padding:26px; font-family:var(--mono); font-size:11.5px; color:var(--ink); border-top:3px solid var(--ink); }
+
+  @media(max-width:720px){
+    .topbar{ padding:18px 20px; }
+    .topnav{ display:none; }
+    .hero{ padding:56px 20px 44px; }
+    .sec-inner{ padding:48px 20px; }
+    .case-head, .case-body{ padding:22px; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+<a class="brand" href="./index.html">Koo Nayoung</a>
+<div class="topnav">
+<a href="./index.html#work">Back to Home</a>
+<a href="https://github.com/kny1209" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+<header class="hero">
+<div class="hero-inner">
+<div class="hero-tag">Team Project</div>
+<h1 class="hero-title">UNDER<br/><span class="hl">GUARD</span></h1>
+<p class="hero-desc">An autonomous pest-monitoring patrol system in which two AMRs take turns patrolling blind spots in warehouses and logistics facilities, detecting and tracking rodents, and reporting their locations and evidence to a monitoring system in real time.</p>
+<div class="hero-jump">
+<a href="#vision">01 · Vision System</a>
+<a href="#robot">02 · Robot System</a>
+</div>
+</div>
+</header>
+<section id="vision">
+<div class="sec-inner">
+<div class="sec-label">01 · Vision Part</div>
+<h2>Vision System</h2>
+<p class="sec-sub">I led the vision pipeline, from converting 2D detection boxes into 3D coordinates the robot can navigate to, to implementing logic that filters out false positives.</p>
+<!-- CASE 1 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 01</div>
+<div class="case-title">Coordinate Transformation Pipeline — 2D Box → 3D Target</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>The 2D bounding boxes detected by YOLO had to be converted into 3D target coordinates for robot navigation.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I divided the pipeline into four stages: pixel mapping → depth sampling → 3D deprojection → map transformation.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>I identified 3D deprojection—the coordinate-frame transition—as the critical stage, separated all four stages into independent functions, and validated them with four self-checks.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>The self-checks helped catch errors before deployment, reducing the risk of the robot navigating to the wrong location if any stage was misaligned.</p>
+</div>
+</div>
+<div class="case-diagram">
+<svg viewbox="0 0 760 165" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ugArrow" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3">
+<path d="M0,0 L6,3 L0,6 Z" fill="#14151A"></path>
+</marker>
+</defs>
+<text fill="#14151A" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="1" opacity="0.6" x="20" y="26">2D Box → 3D Target · 4 Stages · 2 Coordinate-Frame Transforms · 4 Self-Checks</text>
+<!-- Step 1 -->
+<rect fill="#fff" height="92" rx="10" stroke="#14151A" stroke-width="1.5" width="150" x="20" y="50"></rect>
+<circle cx="42" cy="72" fill="#14151A" r="12"></circle>
+<text fill="#fff" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle" x="42" y="77">1</text>
+<text fill="#14151A" font-family="Inter, sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="95" y="77">Pixel Mapping</text>
+<rect fill="#FAFAF7" height="22" rx="5" stroke="#14151A" stroke-width="1" width="120" x="35" y="90"></rect>
+<text fill="#2F5DFF" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="95" y="105">to_depth_px</text>
+<text fill="#14151A" font-family="Inter, sans-serif" font-size="9.5" opacity="0.6" text-anchor="middle" x="95" y="128">Box → Depth Pixel</text>
+<line marker-end="url(#ugArrow)" stroke="#14151A" stroke-width="1.5" x1="170" x2="205" y1="96" y2="96"></line>
+<!-- Step 2 -->
+<rect fill="#fff" height="92" rx="10" stroke="#14151A" stroke-width="1.5" width="150" x="205" y="50"></rect>
+<circle cx="227" cy="72" fill="#14151A" r="12"></circle>
+<text fill="#fff" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle" x="227" y="77">2</text>
+<text fill="#14151A" font-family="Inter, sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="280" y="77">Depth Sampling</text>
+<rect fill="#FAFAF7" height="22" rx="5" stroke="#14151A" stroke-width="1" width="120" x="220" y="90"></rect>
+<text fill="#2F5DFF" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="280" y="105">depth_at</text>
+<text fill="#14151A" font-family="Inter, sans-serif" font-size="9.5" opacity="0.6" text-anchor="middle" x="280" y="128">Measure Actual Depth at Pixel</text>
+<line marker-end="url(#ugArrow)" stroke="#14151A" stroke-width="1.5" x1="355" x2="390" y1="96" y2="96"></line>
+<!-- Step 3 CORE -->
+<rect fill="#14151A" height="108" rx="10" stroke="#14151A" stroke-width="1.5" width="160" x="390" y="42"></rect>
+<rect fill="#F2B705" height="20" rx="10" transform="translate(0,-10)" width="60" x="440" y="42"></rect>
+<text fill="#14151A" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="700" text-anchor="middle" x="470" y="45">CORE</text>
+<circle cx="412" cy="80" fill="#2F5DFF" r="12"></circle>
+<text fill="#fff" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle" x="412" y="85">3</text>
+<text fill="#fff" font-family="Inter, sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="470" y="85">3D Deprojection</text>
+<rect fill="#1E3FC7" height="22" rx="5" stroke="none" width="120" x="405" y="98"></rect>
+<text fill="#fff" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="465" y="113">deproject</text>
+<text fill="#fff" font-family="Inter, sans-serif" font-size="9.5" opacity="0.75" text-anchor="middle" x="470" y="138">Coordinate-Frame Transition</text>
+<line marker-end="url(#ugArrow)" stroke="#14151A" stroke-width="1.5" x1="550" x2="585" y1="96" y2="96"></line>
+<!-- Step 4 -->
+<rect fill="#fff" height="92" rx="10" stroke="#14151A" stroke-width="1.5" width="155" x="585" y="50"></rect>
+<circle cx="607" cy="72" fill="#14151A" r="12"></circle>
+<text fill="#fff" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle" x="607" y="77">4</text>
+<text fill="#14151A" font-family="Inter, sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="662" y="77">Map Transformation</text>
+<rect fill="#FAFAF7" height="22" rx="5" stroke="#14151A" stroke-width="1" width="125" x="600" y="90"></rect>
+<text fill="#2F5DFF" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="662" y="105">tf.transform</text>
+<text fill="#14151A" font-family="Inter, sans-serif" font-size="9.5" opacity="0.6" text-anchor="middle" x="662" y="128">Into the Robot Map Frame</text>
+</svg>
+<div class="fig-cap">Pixel mapping (to_depth_px) → depth sampling (depth_at) → 3D deprojection (deproject, core) → map transformation (tf.transform)</div>
+</div>
+<div class="case-figure" style="margin-top:16px;">
+<img alt="Robot navigating to the transformed 3D coordinates" src="./under-guard-portfolio_files/hole_nav.gif"/>
+<div class="fig-cap">Live Demo — Robot Navigating to the 3D Coordinates Produced by the Pipeline</div>
+</div>
+</div>
+</div>
+<!-- CASE 2 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 02</div>
+<div class="case-title">Detecting Real Openings Using Depth Variation</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>YOLO bounding boxes alone could not distinguish real rodent holes from wall patterns and shadows.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I calculated the depth variation (gap) inside each opening box using p90 minus p10.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>An opening was classified as real only when the variation was at least 0.05 m. I expanded the region by 5 cm on both sides and checked again to reduce errors caused by including adjacent walls.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>This filtered out flat walls and boxes (gap = 0.00 m) as false positives while correctly identifying real openings.</p>
+</div>
+</div>
+<div class="case-figure" style="margin-top:16px;">
+<img alt="Real-time opening detection based on depth variation" src="./under-guard-portfolio_files/depth_judge.gif"/>
+<div class="fig-cap">Live Demo — Camera View (green box = detected opening) and real-time gap log</div>
+</div>
+</div>
+</div>
+<!-- CASE 3 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 03</div>
+<div class="case-title">Trap Check — Hole-to-Trap Distance</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>There was no objective way to determine whether a trap had been placed close enough to an opening.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I repeatedly measured the distance between the opening and the trap to determine an appropriate placement range.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>I set 25 cm (ok_dist) as the hole-to-trap distance threshold. The system automatically classifies the placement as trap_ok within the range and trap_bad outside it.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>Trap placement suitability is now evaluated automatically using a clear numerical threshold, without human judgment.</p>
+</div>
+</div>
+<div class="case-figure" style="margin-top:16px;">
+<img alt="Live demo of trap-placement re-evaluation" src="./under-guard-portfolio_files/trap_recheck.gif"/>
+<div class="fig-cap">Live Demo — Robot Rechecking the Trap Placement</div>
+</div>
+</div>
+</div>
+<!-- CASE 4 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 04</div>
+<div class="case-title">Rodent Tracking — Distance and Time Thresholds</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>There was no defined criterion for determining whether the robot was still tracking a rodent or had lost it.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I tested and defined numerical thresholds for the tracking radius and dwell time.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>The system considers tracking successful when the target remains within a 0.3 m radius for 10 seconds. If the target leaves the radius and is still not found after a five-second search rotation, it is marked rat_lost.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>Tracking success and loss are now determined automatically using clear numerical criteria, without human intervention.</p>
+</div>
+</div>
+<div class="case-figure" style="margin-top:16px;">
+<img alt="Live demo of rodent tracking" src="./under-guard-portfolio_files/rat_tracking.gif"/>
+<div class="fig-cap">Live Demo — Robot Tracking a Rodent Model in Real Time</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="robot">
+<div class="sec-inner">
+<div class="sec-label">02 · Robot Part</div>
+<h2>Robot System</h2>
+<p class="sec-sub">I supported the coordination flow that turns vision detections into real patrol actions, enabling two AMRs to work together continuously.</p>
+<!-- CASE R1 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 05</div>
+<div class="case-title">Waypoint Resume (lap_from)</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>When a robot returned to patrol after responding to an event, such as a rodent detection, it restarted from waypoint 0. This caused it to repeat earlier sections while later sections were left uncovered.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I implemented a way to save the waypoint index at the moment an event occurred.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>RobotAgent stores the current waypoint index in lap_from and resumes patrol from that point after the event is handled.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>By remembering where patrol was interrupted, the robot can cover the entire route without repeatedly revisiting earlier sections.</p>
+</div>
+</div>
+<div class="case-diagram">
+<svg viewbox="0 0 760 250" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ugArrow2" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3">
+<path d="M0,0 L6,3 L0,6 Z" fill="#14151A"></path>
+</marker>
+</defs>
+<text fill="#D6402F" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="1" x="20" y="24">BEFORE — Restart from Waypoint 0</text>
+<g font-family="JetBrains Mono, monospace" font-size="11">
+<circle cx="40" cy="60" fill="#2F5DFF" r="14"></circle><text fill="#fff" text-anchor="middle" x="40" y="64">0</text>
+<circle cx="90" cy="60" fill="#14151A" opacity="0.15" r="14"></circle><text fill="#14151A" text-anchor="middle" x="90" y="64">1</text>
+<circle cx="140" cy="60" fill="#14151A" opacity="0.15" r="14"></circle><text fill="#14151A" text-anchor="middle" x="140" y="64">2</text>
+<circle cx="190" cy="60" fill="#14151A" opacity="0.15" r="14"></circle><text fill="#14151A" text-anchor="middle" x="190" y="64">3</text>
+<circle cx="240" cy="60" fill="#D6402F" r="14"></circle><text fill="#fff" text-anchor="middle" x="240" y="64">4</text>
+<circle cx="290" cy="60" fill="#14151A" opacity="0.08" r="14"></circle><text fill="#14151A" opacity="0.4" text-anchor="middle" x="290" y="64">5</text>
+<circle cx="340" cy="60" fill="#14151A" opacity="0.08" r="14"></circle><text fill="#14151A" opacity="0.4" text-anchor="middle" x="340" y="64">6</text>
+</g>
+<line marker-end="url(#ugArrow2)" stroke="#14151A" stroke-width="1.3" x1="54" x2="76" y1="60" y2="60"></line>
+<line marker-end="url(#ugArrow2)" stroke="#14151A" stroke-width="1.3" x1="104" x2="126" y1="60" y2="60"></line>
+<line marker-end="url(#ugArrow2)" stroke="#14151A" stroke-width="1.3" x1="154" x2="176" y1="60" y2="60"></line>
+<line marker-end="url(#ugArrow2)" stroke="#14151A" stroke-width="1.3" x1="204" x2="226" y1="60" y2="60"></line>
+<line opacity="0.4" stroke="#14151A" stroke-dasharray="2 3" stroke-width="1" x1="254" x2="276" y1="60" y2="60"></line>
+<text fill="#D6402F" font-family="Inter, sans-serif" font-size="10" x="240" y="34">! Event Occurs</text>
+<path d="M 240 74 C 240 105, 40 105, 40 74" fill="none" marker-end="url(#ugArrow2)" stroke="#D6402F" stroke-dasharray="3 3" stroke-width="1.3"></path>
+<text fill="#D6402F" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" x="140" y="118">Earlier Sections Repeated · Later Sections Delayed</text>
+<line opacity="0.3" stroke="#14151A" stroke-dasharray="2 4" stroke-width="1" x1="20" x2="740" y1="140" y2="140"></line>
+<text fill="#1E8E5A" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="1" x="20" y="164">AFTER — Resume from lap_from</text>
+<g font-family="JetBrains Mono, monospace" font-size="11">
+<circle cx="40" cy="200" fill="#2F5DFF" r="14"></circle><text fill="#fff" text-anchor="middle" x="40" y="204">0</text>
+<circle cx="90" cy="200" fill="#14151A" opacity="0.15" r="14"></circle><text fill="#14151A" text-anchor="middle" x="90" y="204">1</text>
+<circle cx="140" cy="200" fill="#14151A" opacity="0.15" r="14"></circle><text fill="#14151A" text-anchor="middle" x="140" y="204">2</text>
+<circle cx="190" cy="200" fill="#14151A" opacity="0.15" r="14"></circle><text fill="#14151A" text-anchor="middle" x="190" y="204">3</text>
+<circle cx="240" cy="200" fill="#1E8E5A" r="14"></circle><text fill="#fff" text-anchor="middle" x="240" y="204">4</text>
+<circle cx="290" cy="200" fill="#1E8E5A" r="14"></circle><text fill="#fff" text-anchor="middle" x="290" y="204">5</text>
+<circle cx="340" cy="200" fill="#1E8E5A" r="14"></circle><text fill="#fff" text-anchor="middle" x="340" y="204">6</text>
+</g>
+<line marker-end="url(#ugArrow2)" stroke="#14151A" stroke-width="1.3" x1="54" x2="76" y1="200" y2="200"></line>
+<line marker-end="url(#ugArrow2)" stroke="#14151A" stroke-width="1.3" x1="104" x2="126" y1="200" y2="200"></line>
+<line marker-end="url(#ugArrow2)" stroke="#14151A" stroke-width="1.3" x1="154" x2="176" y1="200" y2="200"></line>
+<line marker-end="url(#ugArrow2)" stroke="#14151A" stroke-width="1.3" x1="204" x2="226" y1="200" y2="200"></line>
+<line marker-end="url(#ugArrow2)" stroke="#1E8E5A" stroke-width="1.3" x1="254" x2="276" y1="200" y2="200"></line>
+<line marker-end="url(#ugArrow2)" stroke="#1E8E5A" stroke-width="1.3" x1="304" x2="326" y1="200" y2="200"></line>
+<rect fill="#fff" height="70" rx="8" stroke="#1E8E5A" stroke-width="1.3" width="200" x="420" y="150"></rect>
+<text fill="#1E8E5A" font-family="JetBrains Mono, monospace" font-size="10.5" text-anchor="middle" x="520" y="175">Save lap_from = 4</text>
+<text fill="#14151A" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" x="520" y="195">Resume from That Point After the Event</text>
+<text fill="#1E8E5A" font-family="Inter, sans-serif" font-size="10" x="650" y="200">✓ Full Route Coverage</text>
+</svg>
+<div class="fig-cap">Restarting from 0 (Problem) vs. Resuming from lap_from (Solution)</div>
+</div>
+</div>
+</div>
+<!-- CASE R2 -->
+<div class="case-card">
+<div class="case-head">
+<div>
+<div class="case-num">CASE 06</div>
+<div class="case-title">Patrol Handoff</div>
+</div>
+</div>
+<div class="case-body">
+<div class="flow">
+<div class="flow-step">
+<span class="flow-label problem">Problem</span>
+<p>When a patrolling robot ran low on battery, its area could be left without patrol coverage.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label attempt">Approach</span>
+<p>I designed a handoff flow in which a robot returns when its battery reaches a threshold while another robot takes over.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label solve">Solution</span>
+<p>When Robot A returns to the docking station due to low battery, the Central PC selects Robot B, sends a PATROL command, and dispatches it from the dock.</p>
+</div>
+<div class="flow-step">
+<span class="flow-label result">Result</span>
+<p>This minimizes patrol gaps and maintains coverage while the robots switch roles.</p>
+</div>
+</div>
+<div class="case-diagram">
+<svg viewbox="0 0 760 190" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ugArrow3" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3">
+<path d="M0,0 L6,3 L0,6 Z" fill="#14151A"></path>
+</marker>
+</defs>
+<rect fill="#fff" height="130" rx="10" stroke="#1E8E5A" stroke-width="1.5" width="165" x="20" y="30"></rect>
+<text fill="#1E8E5A" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" x="102" y="52">① Robot A on Patrol</text>
+<circle cx="102" cy="95" fill="none" r="30" stroke="#2F5DFF" stroke-dasharray="3 3" stroke-width="1.3"></circle>
+<circle cx="102" cy="95" fill="#14151A" r="4"></circle>
+<text fill="#1E8E5A" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle" x="102" y="145">PATROLLING</text>
+<line marker-end="url(#ugArrow3)" stroke="#14151A" stroke-width="1.5" x1="185" x2="215" y1="95" y2="95"></line>
+<rect fill="#fff" height="130" rx="10" stroke="#D6402F" stroke-width="1.5" width="165" x="215" y="30"></rect>
+<text fill="#D6402F" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" x="297" y="52">② Low Battery</text>
+<text fill="#D6402F" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="297" y="85">Battery Low</text>
+<text fill="#14151A" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" x="297" y="112">Return to Docking Station</text>
+<text fill="#1E8E5A" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle" x="297" y="140">Docked</text>
+<line marker-end="url(#ugArrow3)" stroke="#14151A" stroke-width="1.5" x1="380" x2="410" y1="95" y2="95"></line>
+<rect fill="#fff" height="130" rx="10" stroke="#2F5DFF" stroke-width="1.5" width="165" x="410" y="30"></rect>
+<text fill="#2F5DFF" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" x="492" y="52">③ Central Selects Robot B</text>
+<rect fill="#EEF2FF" height="40" rx="6" stroke="#2F5DFF" stroke-width="1" width="80" x="452" y="68"></rect>
+<text fill="#2F5DFF" font-family="JetBrains Mono, monospace" font-size="9.5" text-anchor="middle" x="492" y="92">Central PC</text>
+<text fill="#14151A" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" x="492" y="128">Send PATROL Command</text>
+<line marker-end="url(#ugArrow3)" stroke="#14151A" stroke-width="1.5" x1="575" x2="605" y1="95" y2="95"></line>
+<rect fill="#14151A" height="130" rx="10" width="135" x="605" y="30"></rect>
+<text fill="#fff" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" x="672" y="52">④ Robot B Deploys</text>
+<text fill="#F2B705" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle" x="672" y="80">UNDOCK</text>
+<circle cx="672" cy="115" fill="none" opacity="0.6" r="26" stroke="#fff" stroke-dasharray="3 3" stroke-width="1.3"></circle>
+<circle cx="672" cy="115" fill="#fff" r="4"></circle>
+<text fill="#1E8E5A" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="middle" x="672" y="150">PATROLLING</text>
+</svg>
+<div class="fig-cap">Robot A low battery → returns to dock → Central selects Robot B → Robot B deploys</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="nav-footer">
+<div class="nav-footer-inner">
+<a class="back-cta" href="./index.html">← Explore Other Projects</a>
+<br/>
+<a class="github-link" href="https://github.com/kny1209" rel="noopener" target="_blank">github.com/kny1209</a>
+</div>
+</section>
+<footer>Koo Nayoung · kny20031209@gmail.com</footer>
+</body></html>
